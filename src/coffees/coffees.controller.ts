@@ -21,7 +21,7 @@ import { UpdateCoffeeDto } from './dto/update-coffee.dto'
 @Controller('coffees')
 export class CoffeesController {
   // dependency injection
-  constructor(private readonly coffeesService: CoffeesService, @Inject(Request) private readonly request: Request) {
+  constructor(private readonly coffeesService: CoffeesService) {
     console.log('CoffeesController is created')
   }
 
