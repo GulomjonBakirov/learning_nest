@@ -1,4 +1,17 @@
-import { Controller, Get, Param, Post, Body, HttpCode, HttpStatus, Res, Patch, Delete, Query } from '@nestjs/common'
+import {
+  Controller,
+  Get,
+  Param,
+  Post,
+  Body,
+  HttpCode,
+  HttpStatus,
+  Res,
+  Patch,
+  Delete,
+  Query,
+  Inject,
+} from '@nestjs/common'
 import { PaginationQueryDto } from 'src/common/dto/pagination-query.dto'
 import { CoffeesService } from './coffees.service'
 
@@ -8,7 +21,9 @@ import { UpdateCoffeeDto } from './dto/update-coffee.dto'
 @Controller('coffees')
 export class CoffeesController {
   // dependency injection
-  constructor(private readonly coffeesService: CoffeesService) {}
+  constructor(private readonly coffeesService: CoffeesService, @Inject(Request) private readonly request: Request) {
+    console.log('CoffeesController is created')
+  }
 
   @Get()
   findAll(@Query() paginationQuery: PaginationQueryDto) {
